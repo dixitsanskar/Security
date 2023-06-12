@@ -6,6 +6,7 @@ import 'package:threat_intelligence_dashboard/util/responsive_layout.dart';
 import '../component/search.dart';
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
+  
 
   @override
   Widget build(BuildContext context) {

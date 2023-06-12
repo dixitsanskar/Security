@@ -12,3 +12,14 @@ class Constant {
   static const Color greenLight = Color(0xcf08b209);
 
 }
+
+
+// api_data.dart
+
+class ApiData {
+   String? verdcit;
+   int? score;
+   String? summary;
+   ApiData({ this.score,  this.verdcit, this.summary });
+}
+

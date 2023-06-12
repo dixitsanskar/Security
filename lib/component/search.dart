@@ -2,8 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:threat_intelligence_dashboard/component/panel_right/panel_right_page.dart';
 import 'package:threat_intelligence_dashboard/util/constant.dart';
 import 'package:http/http.dart' as http;
+
+import 'panel_left/panel_left_page.dart';
 
 class SearchBox extends StatefulWidget {
   const SearchBox({super.key});
@@ -12,16 +15,9 @@ class SearchBox extends StatefulWidget {
   State<SearchBox> createState() => _SearchBoxState();
 }
 
-class ReadyResponse{
-  int? score;
-  String? verdict;
-  String? summary;
-  ReadyResponse({required this.score,required this.verdict, required this.summary});
-
-}
-
 class _SearchBoxState extends State<SearchBox> {
 late final TextEditingController _url ;
+ ApiData? data;
 //static late final Map ready;
 @override
 void initState()
@@ -54,9 +50,10 @@ http.StreamedResponse response = await request.send();
 
 if (response.statusCode == 200) {
   var responseBody =  await response.stream.bytesToString();
- var data = jsonDecode(responseBody);
+ var dat = jsonDecode(responseBody);
  //ready = data;
-  ReadyResponse(score: data['result']['data']['score'], verdict: data['result']['data']['verdict'], summary: data['summary']);
+ print(dat);
+ ApiData(score: dat['result']['data']['score'], verdcit: dat['result']['data']['verdict'], summary: dat['summary']);
 }
 else {
   print(response.reasonPhrase);
@@ -94,9 +91,13 @@ else {
        SizedBox(height: MediaQuery.of(context).size.height * 0.06,
        width: MediaQuery.of(context).size.width * 0.2,
         child: TextButton(onPressed: (){
+
+          
           if(Uri.parse(_url.text).isAbsolute)
           {
             getData();
+           Future.sync(() => print(ApiData().score));    
+                 
           }
           else
           {
@@ -122,3 +123,4 @@ else {
     );
   }
 }
+

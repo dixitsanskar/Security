@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:threat_intelligence_dashboard/component/drawer_page.dart';
 import 'package:threat_intelligence_dashboard/component/panel_left/panel_left_page.dart';
+import 'package:threat_intelligence_dashboard/component/search.dart';
 import 'package:threat_intelligence_dashboard/screen/home_page.dart';
 import 'package:threat_intelligence_dashboard/util/responsive_layout.dart';
 
@@ -15,6 +16,7 @@ class WidgetTree extends StatefulWidget {
 }
 
 class _WidgetTreeState extends State<WidgetTree> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
